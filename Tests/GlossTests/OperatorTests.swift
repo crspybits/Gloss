@@ -560,7 +560,7 @@ class OperatorTests: XCTestCase {
         let result: JSON? = "int32" ~~> int32
         let encoderResult: JSON? = Encoder.encode(int32ForKey: "int32")(int32)
         
-        XCTAssertTrue((((result!["int32"] as! NSNumber)).int32Value == ((encoderResult!["int32"] as! NSNumber)).int32Value), "~~> for Int32 should return same as Encoder.encodeInt32")
+        XCTAssertTrue((result!["int32"] as! Int32) == (encoderResult!["int32"] as! Int32), "~~> for Int32 should return same as Encoder.encodeInt32")
     }
     
     func testEncodeOperatorInt32ArrayReturnsEncoderEncodeInt32Array() {
@@ -596,7 +596,7 @@ class OperatorTests: XCTestCase {
         let result: JSON? = "int64" ~~> int64
         let encoderResult: JSON? = Encoder.encode(int64ForKey: "int64")(int64)
         
-        XCTAssertTrue((((result!["int64"] as! NSNumber)).int64Value == ((encoderResult!["int64"] as! NSNumber)).int64Value), "~~> for Int64 should return same as Encoder.encodeInt64")
+        XCTAssertTrue((result!["int64"] as! Int64) == (encoderResult!["int64"] as! Int64), "~~> for Int64 should return same as Encoder.encodeInt64")
     }
     
     func testEncodeOperatorInt64ArrayReturnsEncoderEncodeInt64Array() {

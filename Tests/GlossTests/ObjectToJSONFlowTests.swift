@@ -89,9 +89,12 @@ class ObjectToJSONFlowTests: XCTestCase {
             "dateArray" : ["2015-08-16T20:51:46.600Z", "2015-08-16T20:51:46.600Z"],
             "dateISO8601" : "2015-08-08T21:57:13Z",
             "dateISO8601Array" : ["2015-08-08T21:57:13Z", "2015-08-08T21:57:13Z"],
-            "int32" : 100000000,
-            "int32Array" : [100000000, 100000000, 100000000],
-            "int64" : 300000000,
+            
+            // By default literal integers are Int's, which are probably Int64's.
+            "int32" : Int32(100000000),
+            
+            "int32Array" : [Int32(100000000), Int32(100000000), Int32(100000000)],
+            "int64" : Int64(300000000),
             "int64Array" : [300000000, 300000000, 300000000],
             "url" : "http://github.com",
             "urlArray" : ["http://github.com", "http://github.com"],
@@ -123,11 +126,11 @@ class ObjectToJSONFlowTests: XCTestCase {
         XCTAssertTrue((result!["stringArray"] as! [String] == ["def", "ghi", "jkl"]), "JSON created from model should have correct values")
         XCTAssertTrue((result!["enumValue"] as! String == "A"), "JSON created from model should have correct values")
         XCTAssertTrue((result!["enumValueArray"] as! [String] == ["A", "B", "C"]), "JSON created from model should have correct values")
+        XCTAssertTrue((result!["int64"] as! Int64) == 300000000, "JSON created from model should have correct values")
+        XCTAssertTrue((result!["int32"] as! Int32) == 100000000, "JSON created from model should have correct values")
         
 #if !os(Linux)
         XCTAssertTrue(((result!["int32Array"] as! [NSNumber]) == [100000000, 100000000, 100000000]), "JSON created from model should have correct values")
-        XCTAssertTrue(((result!["int32"] as! NSNumber).int32Value == 100000000), "JSON created from model should have correct values")
-        XCTAssertTrue(((result!["int64"] as! NSNumber).int64Value == 300000000), "JSON created from model should have correct values")
         XCTAssertTrue(((result!["int64Array"] as! [NSNumber]) == [300000000, 300000000, 300000000]), "JSON created from model should have correct values")
 #endif
         

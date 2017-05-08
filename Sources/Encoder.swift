@@ -298,7 +298,7 @@ public struct Encoder {
             int32 in
             
             if let int32 = int32 {
-                return [key : NSNumber(value: int32)]
+                return [key : int32]
             }
             
             return nil
@@ -378,7 +378,7 @@ public struct Encoder {
             int64 in
             
             if let int64 = int64 {
-                return [key : NSNumber(value: int64)]
+                return [key : int64]
             }
             
             return nil

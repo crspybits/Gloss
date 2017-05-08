@@ -295,8 +295,8 @@ public struct Decoder {
         return {
             json in
             
-            if let number = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? NSNumber {
-                return number.int32Value
+            if let number = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? Int32 {
+                return number
             }
             
             return nil
@@ -375,8 +375,8 @@ public struct Decoder {
         return {
             json in
             
-            if let number = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? NSNumber {
-                return number.int64Value
+            if let number = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) as? Int64 {
+                return number
             }
             
             return nil

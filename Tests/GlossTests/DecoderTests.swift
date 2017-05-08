@@ -137,7 +137,7 @@ class DecoderTests: XCTestCase {
         } catch {
                 print(error)
         }
-            
+    
 #endif
     }
     
